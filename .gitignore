@@ -1,0 +1,7 @@
+Mind.xcodeproj/
+build/
+.build/
+.swiftpm/
+iOS/Info.plist
+macOS/Info.plist
+.DS_Store
