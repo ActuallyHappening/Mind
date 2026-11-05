@@ -8,9 +8,9 @@ OLD-README.md and PORT.md).
 
 I prepare a folder of pdfs: a question, its solutions, some notes. On the iPad
 I navigate into that folder in Mind and I'm straight on a canvas with the
-first pdf, and I write on and around it. A sidebar, hidden by default, lists
-the folder's pdfs; I switch between them and drag them into order, questions
-first and solutions last.
+first pdf, and I write on and around it. A sidebar lists the folder's pdfs;
+I switch between them and drag them into order, questions first and
+solutions last.
 
 Everything is file-focussed and Finder-focussed. My notes are already well
 organised in iCloud Drive and stay there, with no separate library and no
@@ -25,8 +25,8 @@ copies of the pdfs.
 - **R2** A pdf is shown on a canvas I can draw on and around.
 - **R3** The iPad UI is the iCloud Drive folders where my notes already are.
   Opening a folder that holds pdfs shows the canvas.
-- **R4** A sidebar, hidden by default, lists the folder's pdfs to switch
-  between and reorder.
+- **R4** A sidebar lists the folder's pdfs to switch between and reorder,
+  and its subfolders. It starts open if there are subfolders, else hidden.
 - **R5** Changes sync between Mac and iPad through iCloud.
 
 ### Storage

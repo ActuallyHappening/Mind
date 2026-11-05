@@ -83,6 +83,7 @@ struct FolderScreen: View {
         order = index.order
         pdfs = MindFolder.arranged(MindFolder.pdfs(in: folder), by: index)
         selected = index.lastOpened.flatMap { pdfs.contains($0) ? $0 : nil } ?? pdfs.first
+        if !loaded { sidebar = !folders.isEmpty } // open at first when there are subfolders to reach
         loaded = true
     }
 
