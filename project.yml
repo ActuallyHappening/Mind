@@ -1,0 +1,66 @@
+name: Mind
+options:
+  deploymentTarget:
+    iOS: "18.0"
+    macOS: "15.0"
+settings:
+  base:
+    SWIFT_VERSION: "5"
+    DEVELOPMENT_TEAM: 8495B78D24
+    MARKETING_VERSION: "0.1"
+    CURRENT_PROJECT_VERSION: "1"
+    PRODUCT_NAME: Mind
+    PRODUCT_BUNDLE_IDENTIFIER: com.calebyates.mind
+packages:
+  MindKit:
+    path: MindKit
+targets:
+  Mind-iOS:
+    type: application
+    platform: iOS
+    sources: [iOS]
+    dependencies:
+      - package: MindKit
+    settings:
+      base:
+        TARGETED_DEVICE_FAMILY: "2"
+    info:
+      path: iOS/Info.plist
+      properties:
+        CFBundleDisplayName: Mind
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations~ipad:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationPortraitUpsideDown
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        LSSupportsOpeningDocumentsInPlace: true
+        CFBundleDocumentTypes:
+          - CFBundleTypeName: Mind Notes
+            CFBundleTypeRole: Editor
+            LSHandlerRank: Owner
+            LSItemContentTypes: [com.calebyates.mind]
+        UTExportedTypeDeclarations: &types
+          - UTTypeIdentifier: com.calebyates.mind
+            UTTypeDescription: Mind Notes
+            UTTypeConformsTo: [com.apple.package, public.composite-content]
+            UTTypeTagSpecification:
+              public.filename-extension: [mind]
+  Mind-macOS:
+    type: application
+    platform: macOS
+    sources: [macOS]
+    dependencies:
+      - package: MindKit
+    settings:
+      base:
+        ENABLE_APP_SANDBOX: NO
+    info:
+      path: macOS/Info.plist
+      properties:
+        CFBundleDocumentTypes:
+          - CFBundleTypeName: Mind Notes
+            CFBundleTypeRole: Viewer
+            LSHandlerRank: Owner
+            LSItemContentTypes: [com.calebyates.mind]
+        UTExportedTypeDeclarations: *types
