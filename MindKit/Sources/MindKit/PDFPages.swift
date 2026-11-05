@@ -34,19 +34,26 @@ public enum PDFPages {
         context.restoreGState()
     }
 
-    // The page at `frame` with the ink over it.
-    public static func image(of page: CGPDFPage, in frame: CGRect, with drawing: PKDrawing, scale: CGFloat)
-        -> CGImage?
+    // The pages and ink inside `region`, on a light grey background.
+    public static func image(of pages: [(page: CGPDFPage, frame: CGRect)], in region: CGRect, with drawing: PKDrawing,
+                             scale: CGFloat) -> CGImage?
     {
-        let width = Int(frame.width * scale), height = Int(frame.height * scale)
         guard let context = CGContext(
-            data: nil, width: width, height: height, bitsPerComponent: 8, bytesPerRow: 0,
-            space: CGColorSpaceCreateDeviceRGB(), bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue)
+            data: nil, width: Int(region.width * scale), height: Int(region.height * scale), bitsPerComponent: 8,
+            bytesPerRow: 0, space: CGColorSpaceCreateDeviceRGB(),
+            bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue)
         else { return nil }
         context.scaleBy(x: scale, y: scale)
-        drawUpright(page, size: frame.size, context)
-        if let ink = ink(drawing, frame, scale) {
-            context.draw(ink, in: CGRect(origin: .zero, size: frame.size))
+        context.setFillColor(CGColor(gray: 0.95, alpha: 1))
+        context.fill(CGRect(origin: .zero, size: region.size))
+        for (page, frame) in pages where frame.intersects(region) {
+            context.saveGState()
+            context.translateBy(x: frame.minX - region.minX, y: region.maxY - frame.maxY)
+            drawUpright(page, size: frame.size, context)
+            context.restoreGState()
+        }
+        if let ink = ink(drawing, region, scale) {
+            context.draw(ink, in: CGRect(origin: .zero, size: region.size))
         }
         return context.makeImage()
     }

@@ -32,7 +32,7 @@ public enum MindPackage {
             replace("Info.json", in: package, with: try encoder.encode(Info()))
         }
         replace("Drawing.pkdrawing", in: package, with: drawing.dataRepresentation())
-        if let page = pdf?.page(at: 1), let thumbnail = thumbnail(page, drawing) {
+        if let first = pdf.flatMap(PDFPages.frames)?.first, let thumbnail = thumbnail(first, drawing) {
             let preview = package.fileWrappers?["Preview"] ?? {
                 let folder = FileWrapper(directoryWithFileWrappers: [:])
                 folder.preferredFilename = "Preview"
@@ -51,10 +51,10 @@ public enum MindPackage {
         folder.addFileWrapper(file)
     }
 
-    private static func thumbnail(_ page: CGPDFPage, _ drawing: PKDrawing) -> Data? {
-        let size = PDFPages.size(of: page)
-        guard let image = PDFPages.image(of: page, in: CGRect(origin: .zero, size: size), with: drawing,
-                                         scale: 600 / max(size.width, size.height))
+    private static func thumbnail(_ first: (page: CGPDFPage, frame: CGRect), _ drawing: PKDrawing) -> Data? {
+        let frame = first.frame
+        guard let image = PDFPages.image(of: [first], in: frame, with: drawing,
+                                         scale: 600 / max(frame.width, frame.height))
         else { return nil }
         let data = NSMutableData()
         guard let destination = CGImageDestinationCreateWithData(data, UTType.png.identifier as CFString, 1, nil)
