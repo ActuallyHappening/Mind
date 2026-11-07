@@ -78,3 +78,5 @@ Q4/
 - `MindKit/`: Swift package with the file format, shared by both apps.
 - `iOS/`, `macOS/`: the apps. `project.yml` generates `Mind.xcodeproj` with
   XcodeGen; the project is not checked in.
+- `QCAA/`: QCAA past-paper questions as one pdf each, to use in Mind
+  (QCAA/README.md).
