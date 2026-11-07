@@ -11,7 +11,7 @@
 \newcommand{\qcaa}[3]{\hypersetup{pdfsubject={#1},pdfkeywords={#2}}}
 % Multiple choice options, labelled (A) to (D) as on the papers.
 \newenvironment{options}{\begin{enumerate}[label=(\Alph*),itemsep=0.3em]}{\end{enumerate}}
-\newcommand{\marks}[1]{\hfill\textbf{[#1~mark\ifnum#1>1 s\fi]}}
+\newcommand{\qmarks}[1]{\hfill\textbf{[#1~mark\ifnum#1>1 s\fi]}}
 % A diagram cut from the source pdf, vector, with no redrawing:
 % \sourcefig[width=..]{../Source/X.pdf}{page}{left bottom right top, in bp}
 \newcommand{\sourcefig}[4][]{\includegraphics[page=#3,trim=#4,clip,#1]{#2}}

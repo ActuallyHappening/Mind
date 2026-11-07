@@ -39,11 +39,20 @@ through the whole topic (ignoring subheadings), written as `\item[U3T2-5]`.
 The orchestrating agent reads only the section/subsection lines and ids
 (`grep -n 'section\|item\[' Syllabus.tex`) to classify questions.
 
+## Tools
+
+tectonic 0.17 (`cargo install tectonic --locked`, needs the apt -dev
+packages for harfbuzz, icu, graphite2, fontconfig, freetype, openssl).
+The cloud environment "QCAA past papers" installs it in its setup script.
+First run downloads the TeX bundle from relay.fullyjustified.net, which
+redirects to data1b.fullyjustified.net: both must be allowed.
+
 ## Converting a question
 
 Start from `QCAA/template.tex`. Rules:
 
-- Text and maths in LaTeX, verbatim, including the marks.
+- Text and maths in LaTeX, verbatim; marks with `\qmarks{n}` (`\marks`
+  is a TeX primitive).
 - Diagrams, graphs and tables that are hard to typeset: `\sourcefig` cuts
   them from the source pdf as vectors (find the box with
   `pdftotext -bbox-layout`), no redrawing.
