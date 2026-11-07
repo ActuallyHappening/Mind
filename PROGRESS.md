@@ -13,3 +13,8 @@
 - Cloud environment "QCAA past papers" allows qcaa and fullyjustified hosts
   and installs tectonic in its setup script (unproven until a fresh
   session).
+
+## 2026-11-07 (later): Methods, Chemistry, Physics
+
+- Asked for subagents per subject; not started: still no source pdfs and
+  QCAA still 403s. Folders and the subagent brief (AGENTS.md) are ready.

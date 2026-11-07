@@ -73,6 +73,14 @@ the background is transparent. Check a few pdfs by rendering
 (`pdftoppm -png -r 80`) and looking; check `index.tsv` has no empty fields
 and every MC answer is A–D.
 
+## Running it for a subject
+
+Once `<Subject>/Source/` has its pdfs, one subagent per subject, in
+parallel, each told: "Follow QCAA/AGENTS.md for QCAA/<Subject>: rename
+sources, write Syllabus.tex, convert every booklet, run build.sh, report
+index.tsv rows with an empty field or an answer that disagrees with the
+marking guide." The orchestrator then checks style across subjects.
+
 ## Saving tokens
 
 - Extract text with `pdftotext -layout`; only look at page images for

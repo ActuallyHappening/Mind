@@ -5,8 +5,8 @@ Requests and decisions for the question pdfs. How to make them: AGENTS.md.
 ## Requests
 
 - Every QCAA past paper for a subject, plus its syllabus with dot points,
-  in `QCAA/<Subject>/Source/` as pdfs. First subject: Specialist
-  Mathematics. Other subjects follow the same way.
+  in `QCAA/<Subject>/Source/` as pdfs. Subjects: Specialist Mathematics,
+  Mathematical Methods, Chemistry, Physics; one subagent per subject.
 - Syllabus converted to `Syllabus.tex` (tectonic), read to classify
   questions.
 - Every question to its own `.tex`, one consistent style, named like
@@ -25,7 +25,7 @@ Requests and decisions for the question pdfs. How to make them: AGENTS.md.
 
 ## TODO
 
-- [ ] Source pdfs for Specialist Mathematics: QCAA's site serves a
-      Cloudflare challenge to scripts, so download by hand in a browser.
+- [ ] Source pdfs for all four subjects: QCAA's site serves a Cloudflare
+      challenge to scripts, so download by hand in a browser.
 - [ ] Syllabus.tex, then convert one paper and revise AGENTS.md.
 - [ ] Convert all papers, check, build.
